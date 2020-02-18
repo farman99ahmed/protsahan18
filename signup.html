@@ -1,0 +1,32 @@
+
+<!Doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style1.css">
+		
+		<script>
+function validateForm() {
+    var x = document.forms["myForm"]["email"].value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        alert("Please enter valid e-mail address.");
+        return false;
+    }
+}
+</script>
+
+
+	</head>
+	<body><font face="Broadway Regular" color="White">
+	<h1 align='center'>Sign Up</h1></font>
+	<form name="myForm" class="signup-form" action="signup_inc.php" onsubmit="return validateForm();" method="POST">
+		<input type="text" name="name" placeholder="Name" required />
+		<input type="text" name="email" placeholder="E-Mail" required />
+		<input type="text" name="sap" placeholder="SAP ID" pattern="(?=.*\d).{11,11}" title="11 numbers" required />
+		<input type="text" name="uid" placeholder="Username" pattern="(?=.*\d).{3,10}" title="Atleast 3 or maximum 10 characters" required />
+		<input type="password" id="pwd" placeholder="Password" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+		<button type="submit" name="submit">Sign up</button>
+	</form>
+	</body>
+</html,

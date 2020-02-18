@@ -1,0 +1,429 @@
+<?php session_start();?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Protsahan 2018</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/menu.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/icons.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/animate.css" rel="stylesheet">	
+	<link href="css/responsive.css" rel="stylesheet">
+	<link href="css/style2.css" rel="stylesheet">
+	<link href="css/events.css" rel="stylesheet1">
+	<link rel="stylesheet1" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+	
+
+    <!--[if lt IE 9]>
+	    <script src="js/html5shiv.js"></script>
+	    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+	<script>
+	function toggleMenu() {
+	  "use strict";
+
+	  var isOpen = true;
+	  var button = document.querySelector("#expand-navigation");
+	  var wrapper = document.querySelector(".wrapper");
+	  var overlay = document.querySelector(".overlay");
+
+	  button.addEventListener("click", navigationHandler);
+	  document.addEventListener("click", closeNavigation);
+
+	  function navigationHandler(event) {
+	    if (event === null) {
+	      event = window.event;
+	    }
+
+	    event.stopPropagation();
+
+	    !isOpen ? openNavigation() : closeNavigation();
+	  }
+
+	  function openNavigation() {
+	    isOpen = true;
+
+	    button.innerHTML = "-";
+	    wrapper.className = "wrapper opened";
+	    overlay.className = "overlay on-overlay";
+	  }
+
+	  function closeNavigation() {
+	    isOpen = false;
+
+	    button.innerHTML = "&#9776;";
+	    wrapper.className = "wrapper";
+	    overlay.className = "overlay";
+	  }
+	};
+	</script>
+</head><!--/head-->
+
+<body>
+	<header id="header" role="banner">		
+		<div class="main-nav">
+			<div class="container">
+		        <div class="row">
+					<ul style="display:inline;">
+					<li><a href="#events">Events</a></li>
+					<li><a href="#sponsor">Sponsors</a></li>
+					<li><a href="#contact">Contact</a></li>	        		
+		            <li style="margin-top:5px;">
+		                <a class="" href="index.html" style="width:100%">
+		                	<img src="images/Protsahan18.png" alt="logo" style="width:60%;height:60%;border-radius:50%;margin:0;padding:0;">
+		                </a>                    
+		            </li>
+					
+					
+					<?php
+						if(isset($_SESSION['u_id'])){
+							
+								echo '
+								
+								<li><a href="#sponsor">Sponsors</a></li>
+								<li><a href="qrcode/generate_code.php">';echo $_SESSION['u_uid'];echo'</a></li>
+								<li>
+								<div class="signin-form" style="float:left;width:100%;margin-top:2.5%">
+								<form action="logout_inc.php" method="POST">
+								<button style="width:50%;" type="submit" name="submit">Sign Out</button></form></div></li>';
+						}
+						else
+						{
+							echo '
+								<div class="signin-form" style="float:left;width:42.857144%;margin-top:2.5%">
+								<form action="login_inc.php" method="POST">
+								<input type="text" name="uid" placeholder="Username"/></li>
+								<input type="password" name="pwd" placeholder="Password"/></li>
+								<button type="submit" name="submit">Sign In</button>
+								<a href="signup.php"><button type="button" name="signup">Sign Up</button></a></form></div>
+								';
+						}
+					?>
+					</ul>	
+		        </div>
+	        </div>
+        </div>
+		<div class="mobile-nav">
+			<div class="container">
+				<div style="float:left;width:30%;">
+				<a class="" href="index.html" style="margin:0;">
+		            <img src="images/Protsahan18.png" alt="logo" style="width:60px;height:60px;border-radius:50%;margin:0;margin-top:10px;padding:0;">
+		        </a>
+				</div>
+				<div style="float:right;width:70%;">
+				<div class="header-top">
+					<div class="pull-right social-icons">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-instagram"></i></a>
+					</div>
+				</div>
+				</div>    
+			</div>
+		</div>
+		<button class="menu-button" id="expand-navigation" onclick="toggleMenu()" >&#9776;</button>
+		<section class="wrapper">
+  			<ul>
+    			<li><a href="#home"><p class="p1">Home</p><br><span id="span1" class="fa fa-home"></span></a></li>
+			    <li><a href="register.php"><p class="p2">Register</p><br><span id="span2" class="fa fa-edit"></span></a></li>
+			    <li><a href="#events"><p class="p3">Events</p><br><span id="span3" class="fa fa-calendar"></span></a></li>
+    			<li><a href="#team"><p class="p4">Team</p><br><span id="span4" class="fa fa-group"></span></a></li>
+    			<li><a href="#sponsor"><p class="p5">Sponsor</p><br><span id="span5" class="fa fa-handshake-o"></span></a></li>
+    			<li><a href="#contact"><p class="p6">Contact</p><br><span id="span6" class="fa fa-address-book"></span></a></li>
+  			</ul>
+		</section>
+		<div class="overlay"></div>                    
+    </header>
+    <!--/#header--> 
+
+    <section id="home">	
+		<div id="main-slider" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#main-slider" data-slide-to="0" class="active"></li>
+				<li data-target="#main-slider" data-slide-to="1"></li>
+				<li data-target="#main-slider" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<img class="img-responsive" src="images/slider/bg.jpg" alt="slider">						
+					<div class="carousel-caption">
+						<h4>welcome to </h4>
+						<h2>protsahan 2018 </h2>
+						<a href="#events">GRAB YOUR TICKETS <i class="fa fa-angle-right"></i></a>
+					</div>
+				</div>
+				<div class="item">
+					<img class="img-responsive" src="images/slider/bg.jpg" alt="slider">	
+					<div class="carousel-caption">
+						<h4>from </h4>
+						<h2>23<sup>rd</sup>-25<sup>th</sup> february </h2>
+						<a href="#events">GRAB YOUR TICKETS <i class="fa fa-angle-right"></i></a>
+					</div>
+				</div>
+				<div class="item">
+					<img class="img-responsive" src="images/slider/bg.jpg" alt="slider">	
+					<div class="carousel-caption">
+						<h2>register </h2>
+						<h4>for our events </h4>
+						<!--<h4></h4>-->
+						<a href="#events" >GRAB YOUR TICKETS <i class="fa fa-angle-right"></i></a>
+					</div>
+				</div>				
+			</div>
+		</div>    	
+    </section>
+	<!--/#home-->
+
+	<section id="events">
+			<div class="row">
+							
+				
+
+
+<div class="container-fluid">
+
+	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project wow animated animated4 fadeInLeft">
+        <div class="project-hover">
+        	<h2>PAINT BALL</h2>
+            
+            <hr />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p>
+            
+        </div>
+    </div>
+	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-2 wow animated animated3 fadeInLeft">
+    	<div class="project-hover">
+        	<h2>ROADIES</h2>
+            <hr />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p>
+            
+        </div>
+    </div>
+	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-3 wow animated animated2 fadeInLeft">
+    	<div class="project-hover">
+        	<h2>TAKESHI'S CASTLE</h2>
+            <hr />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p>
+            
+        </div>
+    </div>
+	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-4 wow animated fadeInLeft">
+    	<div class="project-hover">
+        	<h2>SOAPY FOOTBALL</h2>
+            <hr />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar ex pulvinar est laoreet ullamcorper.</p>
+           
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+				
+			</div>
+			<div class="cart">
+				<a href="#"><i class="fa fa-shopping-cart"></i> <span>Purchase Tickets</span></a>
+			</div>
+		
+	</section><!--/#events-->
+
+	<section id="team">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12">
+					<div id="team-carousel" class="carousel slide" data-interval="false">
+						<h2 class="heading">OUR AMAZING CORE</h2>
+						<a class="even-control-left" href="#team-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+						<a class="even-control-right" href="#team-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
+						<div class="carousel-inner">
+							<div class="item active">
+								<div class="row">
+									<div class="col-sm-3">
+										<div class="single-event">
+											<img class="img-responsive" src="images/event/KDP.png" alt="team-image">
+											<h4>Kunal D Patel</h4>
+											<h5>CORE MEMBER</h5>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="single-event">
+											<img class="img-responsive" src="images/event/MU.jpg" alt="team-image">
+											<h4>Manuj Upadhyay</h4>
+											<h5>CORE MEMBER</h5>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="single-event">
+											<img class="img-responsive" src="images/event/SB.jpg" alt="team-image">
+											<h4>Sreeja Biswas</h4>
+											<h5>CORE MEMBER</h5>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="single-event">
+											<img class="img-responsive" src="images/event/NC.jpg" alt="team-image">
+											<h4>Naman Choudhary</h4>
+											<h5>CORE MEMBER</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="row">
+									<div class="col-sm-3">
+										<div class="single-event">
+											<img class="img-responsive" src="images/event/DM.jpg" alt="team-image">
+											<h4>Davesh Mehta</h4>
+											<h5>CORE MEMBER</h5>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="single-event">
+											<img class="img-responsive" src="images/event/SM.jpg" alt="team-image">
+											<h4>Shivani Mehta</h4>
+											<h5>CORE MEMBER</h5>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="single-event">
+											<img class="img-responsive" src="images/event/AB.jpg" alt="team-image">
+											<h4>Ameya Bhalerao</h4>
+											<h5>CORE MEMBER</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</section><!--/#team-->
+	
+	<section id="sponsor">
+		<div id="sponsor-carousel" class="carousel slide" data-interval="false">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-10">
+						<h2>Sponsors</h2>			
+						<a class="sponsor-control-left" href="#sponsor-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+						<a class="sponsor-control-right" href="#sponsor-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
+						<div class="carousel-inner">
+							<div class="item active">
+								<ul>
+									<li><a href="#"><img class="img-responsive" src="images/sponsor/sponsor1.png" alt=""></a></li>
+									<!--<li><a href="#"><img class="img-responsive" src="images/sponsor/sponsor2.png" alt=""></a></li>
+									<li><a href="#"><img class="img-responsive" src="images/sponsor/sponsor3.png" alt=""></a></li>
+									<li><a href="#"><img class="img-responsive" src="images/sponsor/sponsor4.png" alt=""></a></li>
+									<li><a href="#"><img class="img-responsive" src="images/sponsor/sponsor5.png" alt=""></a></li>
+									<li><a href="#"><img class="img-responsive" src="images/sponsor/sponsor6.png" alt=""></a></li>-->
+								</ul>
+							</div>
+							<div class="item">
+								<ul>
+									<!--<li><a href="#"><img class="img-responsive" src="images/sponsor/sponsor6.png" alt=""></a></li>
+									<li><a href="#"><img class="img-responsive" src="images/sponsor/sponsor5.png" alt=""></a></li>
+									<li><a href="#"><img class="img-responsive" src="images/sponsor/sponsor4.png" alt=""></a></li>
+									<li><a href="#"><img class="img-responsive" src="images/sponsor/sponsor3.png" alt=""></a></li>
+									<li><a href="#"><img class="img-responsive" src="images/sponsor/sponsor2.png" alt=""></a></li>-->
+									<li><a href="#"><img class="img-responsive" src="images/sponsor/sponsor1.png" alt=""></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>				
+			</div>
+			<div class="light">
+				<img class="img-responsive" src="images/light.png" alt="">
+			</div>
+		</div>
+	</section><!--/#sponsor-->
+
+	<section id="contact">
+		<!--<div id="map">
+			<div id="gmap-wrap">
+	 			<div id="gmap"> 				
+	 			</div>	 			
+	    	</div>
+		</div><!-/#map-->
+		<div class="contact-section">
+			<div class="ear-piece">
+				<img class="img-responsive" src="images/ear-piece.png" alt="">
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3 col-sm-offset-4">
+						<div class="contact-text">
+							<h3>Contact</h3>
+							<address>
+								E-mail: protsahan2018@gmail.com<br>
+							</address>
+						</div>
+						<div class="contact-address">
+							<h3>Contact</h3>
+							<address>
+								Mukesh Patel Technolgy Park,<br>
+								NH 3, Shirpur,<br>
+								Dhule, 425 405<br>
+								Maharashtra.
+							</address>
+						</div>
+					</div>
+					<div class="col-sm-5">
+						<div id="contact-section">
+							<h3>Send a message</h3>
+					    	<div class="status alert alert-success" style="display: none"></div>
+					    	<form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php">
+					            <div class="form-group">
+					                <input type="text" name="name" class="form-control" required="required" placeholder="Name">
+					            </div>
+					            <div class="form-group">
+					                <input type="email" name="email" class="form-control" required="required" placeholder="Email ID">
+					            </div>
+					            <div class="form-group">
+					                <textarea name="message" id="message" required="required" class="form-control" rows="4" placeholder="Enter your message"></textarea>
+					            </div>                        
+					            <div class="form-group">
+					                <button type="submit" class="btn btn-primary pull-right">Send</button>
+					            </div>
+					        </form>	       
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</section>
+    <!--/#contact-->
+
+    <footer id="footer">
+        <div class="container">
+            <div class="text-center">
+                <p> Copyright  &copy; Protsahan 2018</p>                
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+  
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  	<script type="text/javascript" src="js/gmaps.js"></script>
+	<script type="text/javascript" src="js/smoothscroll.js"></script>
+    <script type="text/javascript" src="js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="js/coundown-timer.js"></script>
+    <script type="text/javascript" src="js/jquery.scrollTo.js"></script>
+    <script type="text/javascript" src="js/jquery.nav.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>  
+</body>
+</html>
+https://www.youtube.com/watch?v=xb8aad4MRx8

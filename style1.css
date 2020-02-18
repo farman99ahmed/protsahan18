@@ -1,0 +1,50 @@
+.signup-form{	
+	width:30%;
+	float: none;
+	margin-left: 35%;
+	margin-right: 35%;
+	padding-top:30px;
+}
+.signup-form input{
+	width: 90%;
+	height: 35px;
+	padding-left: 15px;
+	outline: none;
+	border:none;
+	border-radius: 20px;
+	margin-bottom: 20px;
+	color: #ffffff;
+	background: rgba(255,255,255,.2);
+}
+.signup-form input:selected {
+	border: none;
+	outline: none;
+}
+
+.signup-form button{
+	float: none;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 20px;
+	text-align: center;
+	color: #ffffff;
+	padding-top: 8px;
+	width: 93%;
+	height: 35px;
+	border: none;
+	border-radius: 20px;
+	margin-top: 23px;
+	background-color: #1059FF;
+	cursor: pointer;
+}
+
+.signup-form button:hover{
+	background-color:#111;
+}
+
+body{
+
+   	background-color: #33888F;
+	background-image: url("../website/images/registration-bck.jpg");
+
+}
